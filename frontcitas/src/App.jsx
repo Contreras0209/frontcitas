@@ -1,17 +1,23 @@
-// App.jsx
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import Formulario from './componentes/formulario';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Home from './paginas/Home';   // Importa el componente Home
+import Login from './paginas/login'; // Importa el componente Login
 
 function App() {
   return (
-    <div className="container d-flex flex-column align-items-center justify-content-center vh-100">
-      <h2 className="mb-4">Login</h2>
-      <Formulario />
-    </div>
+    <Router>
+      <Routes>
+        {/* Ruta raíz ("/") redirige automáticamente a /home */}
+        <Route path="/" element={<Navigate to="/home" />} />
+        
+        {/* Ruta para el Home */}
+        <Route path="/Home" element={<Home />} />
+        
+        {/* Ruta para el Login */}
+        <Route path="/Login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-
 
