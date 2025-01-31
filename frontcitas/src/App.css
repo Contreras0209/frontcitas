@@ -1,25 +1,51 @@
-/* App.css */
-body, #root {
+/* Estilos para la barra de navegación */
+nav.navbar {
+  width: 100%;
+  position: fixed; /* Fija la barra en la parte superior */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Asegura que la barra esté encima de otros elementos */
+  height: 60px;
+}
+
+/* Evitar que el contenido quede cubierto por la barra */
+body {
+  margin: 0;
+  padding-top: 70px; /* Ajustado para dar más espacio debajo de la barra */
+}
+
+/* Contenedor principal que agrupa el contenido */
+.main-container {
+  display: flex;
+  flex-direction: column; /* Alineación de elementos en columna */
+  justify-content: center;
+  align-items: center; /* Centra el contenido horizontal y vertical */
+  text-align: center;
+  width: 100%;
+  min-height: 100vh; /* Asegura que ocupe toda la altura de la ventana */
+  padding: 20px;
+}
+
+/* Ajustes del carrusel */
+.carousel-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
   width: 100%;
-  max-width: 500px;
-  text-align: center;
+  max-width: 1200px; /* Ajusta el ancho máximo del carrusel */
+  margin-top: 30px;
 }
 
-form {
+/* Ajustar imágenes dentro del carrusel para que tengan el mismo tamaño */
+.carousel-inner img {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho disponible */
+  height: 500px; /* Ajusta la altura a un valor fijo, según lo que necesites */
+  object-fit: cover; /* Asegura que las imágenes se ajusten al tamaño sin deformarse */
+}
+
+
+/* Ajustes generales para el carrusel */
+.carousel {
   width: 100%;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f8f9fa;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 1000px; /* Ajusta el ancho máximo del carrusel */
 }
-

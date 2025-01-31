@@ -1,19 +1,27 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './paginas/Home';   // Importa el componente Home
-import Login from './paginas/login'; // Importa el componente Login
+import Home from './paginas/Home';
+import Login from './paginas/login';
+import Navbar from './componentes/Navbar';
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Ruta raíz ("/") redirige automáticamente a /home */}
+        {/* Redirige la ruta raíz "/" a "/home" */}
         <Route path="/" element={<Navigate to="/home" />} />
-        
-        {/* Ruta para el Home */}
-        <Route path="/Home" element={<Home />} />
-        
-        {/* Ruta para el Login */}
-        <Route path="/Login" element={<Login />} />
+
+        {/* Página de inicio con Navbar */}
+        <Route path="/home" element={<Home />} />
+
+        {/* Página de login (sin Navbar) */}
+        <Route path="/login" element={<Login />} />
+
+        {/* Páginas adicionales */}
+        <Route path="/pagina1" element={<h1>Página 1 en construcción</h1>} />
+        <Route path="/pagina2" element={<h1>Página 2 en construcción</h1>} />
+
+        {/* Ruta para manejar páginas no encontradas */}
+        <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
       </Routes>
     </Router>
   );
