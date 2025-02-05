@@ -7,7 +7,7 @@ const Tarjeta = ({ imagen, titulo, texto }) => {
       <div className="card-body">
         <h4 className="card-title">{titulo}</h4>
         <p className="card-text">{texto}</p>
-        <a href="#" className="btn btn-primary">Reservar Cita</a>
+        <a href="/citas" className="btn btn-primary">Reservar Cita</a>
       </div>
     </div>
   );

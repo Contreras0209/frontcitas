@@ -12,12 +12,12 @@ nav.navbar {
 /* Espaciado para el body, considerando la navbar fija */
 body {
   margin: 0;
-  padding-top: 70px; /* Ajustado para que el contenido no quede debajo de la navbar */
+  padding-top: 80px; /* Ajuste para que el contenido no quede debajo de la navbar */
 }
 
 /* ----------------------------------- Carrusel ----------------------------------- */
 
-/* Centra el carrusel y mejora la responsividad */
+/* Contenedor del carrusel */
 .carousel-container {
   display: flex;
   justify-content: center;
@@ -26,20 +26,20 @@ body {
   max-width: 1000px;
   margin: 30px auto;
   padding: 20px;
-  margin-bottom: 50px; /* Separación inferior ajustada para el espacio entre carrusel y tarjetas */
+  margin-bottom: 50px; /* Separación inferior ajustada */
 }
 
-/* Ajuste de tamaño para el carrusel */
+/* Ajuste del tamaño del carrusel */
 .carousel {
   width: 60%;
   max-width: 900px;
 }
 
-/* Ajuste de las imágenes del carrusel */
+/* Estilo de las imágenes del carrusel */
 .carousel-inner img {
   width: 100%;
-  height: 300px; /* Ajusta la altura */
-  object-fit: cover; /* Para que las imágenes llenen el espacio */
+  height: 300px; /* Ajuste de altura */
+  object-fit: cover; /* Asegura que las imágenes cubran el área */
 }
 
 /* ----------------------------------- Tarjetas ----------------------------------- */
@@ -49,14 +49,14 @@ body {
   display: flex;
   justify-content: center;
   gap: 30px; /* Espacio entre las tarjetas */
-  margin-top: 50px; /* Separación del carrusel */
+  margin-top: 50px; /* Separación desde el carrusel */
   margin-bottom: 30px; /* Separación inferior */
   flex-wrap: wrap; /* Permite que las tarjetas se ajusten en pantallas pequeñas */
 }
 
 /* Estilo de cada tarjeta */
 .card {
-  width: 300px; /* Tamaño de la tarjeta */
+  width: 300px; /* Tamaño estándar de la tarjeta */
   margin: 10px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
@@ -65,7 +65,7 @@ body {
 
 /* Efecto hover: aumenta el tamaño de la tarjeta */
 .card:hover {
-  transform: scale(1.05); /* Aumenta el tamaño al pasar el ratón */
+  transform: scale(1.05); /* Aumento de tamaño al pasar el ratón */
 }
 
 /* ----------------------------------- Ajustes Responsivos ----------------------------------- */
@@ -79,10 +79,10 @@ body {
 
   /* Ajuste de la imagen del carrusel en móviles */
   .carousel-inner img {
-    height: 200px; /* Reducir altura */
+    height: 200px; /* Reducción de altura en pantallas pequeñas */
   }
 
-  /* Ajuste del contenedor de tarjetas */
+  /* Ajuste del contenedor de las tarjetas */
   .tarjetas-container {
     flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
     align-items: center; /* Centrar las tarjetas en columna */
@@ -92,4 +92,71 @@ body {
   .card {
     width: 90%; /* Hacer las tarjetas más grandes en pantallas pequeñas */
   }
+}
+
+/* ----------------------------------- Formulario de Reservación ----------------------------------- */
+
+/* Contenedor del formulario */
+.reservacion-container {
+  width: 50%;
+  margin: 100px auto;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Título del formulario */
+.reservacion-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilo de los campos de formulario */
+.form-control {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* Estilo del botón de envío */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Efecto hover del botón */
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Ajuste para campos con validación de error */
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Feedback de error */
+.invalid-feedback {
+  display: block;
+  color: #dc3545;
+  font-size: 14px;
+}
+
+/* Estilo de los grupos de campos */
+.form-group {
+  margin-bottom: 20px;
 }

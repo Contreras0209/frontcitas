@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './paginas/Home';
 import Login from './paginas/Login';
+import Citas from './paginas/Citas'; // Importa la página de Citas
 import Navbar from './componentes/Navbar';
 
 function App() {
@@ -18,10 +19,13 @@ function App() {
         {/* Página de login */}
         <Route path="/login" element={<Login />} />
 
-        </Routes>
+        {/* Página de citas */}
+        <Route path="/citas" element={<Citas />} />
+      </Routes>
     </Router>
   );
 }
 
 export default App;
+
 
