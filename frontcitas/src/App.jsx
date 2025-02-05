@@ -1,28 +1,24 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './paginas/Home';
-import Login from './paginas/login';
+import Login from './paginas/Login';
 import Navbar from './componentes/Navbar';
 
 function App() {
   return (
     <Router>
+      {/* Navbar está fuera de Routes, así que se muestra en todas las páginas */}
+      <Navbar />
       <Routes>
         {/* Redirige la ruta raíz "/" a "/home" */}
         <Route path="/" element={<Navigate to="/home" />} />
 
-        {/* Página de inicio con Navbar */}
+        {/* Página de inicio */}
         <Route path="/home" element={<Home />} />
 
-        {/* Página de login (sin Navbar) */}
+        {/* Página de login */}
         <Route path="/login" element={<Login />} />
 
-        {/* Páginas adicionales */}
-        <Route path="/pagina1" element={<h1>Página 1 en construcción</h1>} />
-        <Route path="/pagina2" element={<h1>Página 2 en construcción</h1>} />
-
-        {/* Ruta para manejar páginas no encontradas */}
-        <Route path="*" element={<h1>404 - Página no encontrada</h1>} />
-      </Routes>
+        </Routes>
     </Router>
   );
 }

@@ -13,77 +13,94 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
+/* ✅ Eliminamos el `display: flex` en body */
 body {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;  /* Centra el contenido horizontalmente */
-  align-items: center;      /* Centra el contenido verticalmente */
   min-width: 320px;
-  min-height: 100vh;        /* Hace que el body ocupe toda la altura de la ventana */
+  min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  text-align: center; /* Asegura que el título esté centrado */
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
+/* ✅ Centrado del contenido dentro de main-container */
 .main-container {
-  text-align: center; /* Centra el contenido dentro de este contenedor */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px 20px; /* ⬅️ Ajuste: padding-top de 80px */
 }
 
+/* ----------------------------------- Carrusel ----------------------------------- */
+
+/* Ajuste del carrusel para mayor responsividad */
 .carousel-container {
-  margin-top: 20px; /* Agrega espacio entre el título y el carrusel */
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 50%;
+  max-width: 900px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Ajuste del tamaño del carrusel en móviles */
+@media (max-width: 768px) {
+  .carousel-container {
+    width: 95%;
   }
-  
-  a:hover {
-    color: #747bff;
+}
+
+/* ----------------------------------- Tarjetas ----------------------------------- */
+
+/* Contenedor de las tarjetas */
+.tarjetas-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Espacio entre las tarjetas */
+  margin-top: 50px; /* Separación del carrusel */
+  margin-bottom: 30px; /* Separación inferior */
+  flex-wrap: wrap; /* Permite que las tarjetas se ajusten en pantallas pequeñas */
+}
+
+/* Estilo de cada tarjeta */
+.card {
+  width: 300px; /* Tamaño de la tarjeta */
+  margin: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Efecto hover: aumenta el tamaño de la tarjeta */
+.card:hover {
+  transform: scale(1.05); /* Aumenta el tamaño al pasar el ratón */
+}
+
+/* ----------------------------------- Ajustes Responsivos ----------------------------------- */
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  /* Carrusel más grande en pantallas pequeñas */
+  .carousel {
+    width: 90%;
   }
 
-  button {
-    background-color: #f9f9f9;
+  /* Ajuste de la imagen del carrusel en móviles */
+  .carousel-inner img {
+    height: 200px; /* Reducir altura */
+  }
+
+  /* Ajuste del contenedor de tarjetas */
+  .tarjetas-container {
+    flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    align-items: center; /* Centrar las tarjetas en columna */
+  }
+
+  /* Ajuste del tamaño de las tarjetas */
+  .card {
+    width: 90%; /* Hacer las tarjetas más grandes en pantallas pequeñas */
   }
 }
 

@@ -15,19 +15,19 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav mx-auto">
             <li className="nav-item">
-              <Link to="/" className="nav-link">Home</Link>
+              <Link to="/" className="nav-link">Inicio</Link>
             </li>
             <li className="nav-item">
-              <Link to="/login" className="nav-link">Login</Link>
+              <Link to="/login" className="nav-link">Acceso</Link>
             </li>
             <li className="nav-item">
-              <Link to="#" className="nav-link">Another Page</Link>
+              <Link to="#" className="nav-link">Pendiente</Link>
             </li>
           </ul>
           
           <form className="d-flex">
             <input className="form-control me-2" type="text" placeholder="Search" />
-            <button className="btn btn-primary" type="button">Search</button>
+            <button className="btn btn-primary" type="button">Buscar</button>
           </form>
         </div>
       </div>
