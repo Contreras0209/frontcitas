@@ -13,7 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ✅ Eliminamos el `display: flex` en body */
 body {
   margin: 0;
   padding: 0;
@@ -22,7 +21,6 @@ body {
   padding-top: 80px; 
 }
 
-/* ✅ Centrado del contenido dentro de main-container */
 .main-container {
   display: flex;
   flex-direction: column;
@@ -31,12 +29,11 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px 20px; /* ⬅️ Ajuste: padding-top de 80px */
+  padding: 80px 20px 20px; 
 }
 
 /* ----------------------------------- Carrusel ----------------------------------- */
 
-/* Ajuste del carrusel para mayor responsividad */
 .carousel-container {
   margin-top: 20px;
   display: flex;
@@ -46,7 +43,6 @@ body {
   max-width: 900px;
 }
 
-/* Ajuste del tamaño del carrusel en móviles */
 @media (max-width: 768px) {
   .carousel-container {
     width: 95%;
@@ -55,53 +51,138 @@ body {
 
 /* ----------------------------------- Tarjetas ----------------------------------- */
 
-/* Contenedor de las tarjetas */
 .tarjetas-container {
   display: flex;
   justify-content: center;
-  gap: 30px; /* Espacio entre las tarjetas */
-  margin-top: 50px; /* Separación del carrusel */
-  margin-bottom: 30px; /* Separación inferior */
-  flex-wrap: wrap; /* Permite que las tarjetas se ajusten en pantallas pequeñas */
+  gap: 30px;
+  margin-top: 50px; 
+  margin-bottom: 30px; 
+  flex-wrap: wrap; 
 }
 
 /* Estilo de cada tarjeta */
 .card {
-  width: 300px; /* Tamaño de la tarjeta */
+  width: 300px; 
   margin: 10px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   transition: transform 0.3s ease-in-out;
 }
 
-/* Efecto hover: aumenta el tamaño de la tarjeta */
 .card:hover {
   transform: scale(1.05); /* Aumenta el tamaño al pasar el ratón */
 }
 
 /* ----------------------------------- Ajustes Responsivos ----------------------------------- */
 
-/* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
-  /* Carrusel más grande en pantallas pequeñas */
   .carousel {
     width: 90%;
   }
 
-  /* Ajuste de la imagen del carrusel en móviles */
   .carousel-inner img {
-    height: 200px; /* Reducir altura */
+    height: 200px;
   }
 
-  /* Ajuste del contenedor de tarjetas */
   .tarjetas-container {
-    flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
-    align-items: center; /* Centrar las tarjetas en columna */
+    flex-direction: column;
+    align-items: center;
   }
 
-  /* Ajuste del tamaño de las tarjetas */
+  
   .card {
-    width: 90%; /* Hacer las tarjetas más grandes en pantallas pequeñas */
+    width: 90%; 
   }
 }
 
+
+/* ----------------------------------- Formulario de Reservación ----------------------------------- */
+
+.reservacion-container {
+  width: 70%;
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  
+}
+
+.reservacion-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-control {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.invalid-feedback {
+  display: block;
+  color: #dc3545;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+
+.citas-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;      
+  height: 100vh;            
+  text-align: center;       
+  padding-top: 50px;
+}
+
+.citas-container h1 {
+  margin-bottom: 30px; 
+}
+
+.reservacion-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  max-width: 1000px;
+  padding: 40px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex-direction: column;
+}

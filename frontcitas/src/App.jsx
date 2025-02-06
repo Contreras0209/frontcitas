@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './paginas/Home';
 import Login from './paginas/Login';
-import Citas from './paginas/Citas'; // Importa la página de Citas
+import Citas from './paginas/Citas'; 
 import Navbar from './componentes/Navbar';
 
 function App() {

@@ -1,25 +1,68 @@
-.formulario-container {
-    max-width: 400px; /* Hace que el formulario sea más angosto */
-    margin: 100px auto; /* Centra el formulario vertical y horizontalmente */
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Personalización de los inputs */
-  .form-control {
-    border-radius: 5px;
-  }
-  
-  /* Personalización del botón */
-  .btn-primary {
-    background-color: #646cff;
-    border: none;
-    transition: background 0.3s;
-  }
-  
-  .btn-primary:hover {
-    background-color: #535bf2;
-  }
-  
+
+/* ----------------------------------- Formulario de Reservación ----------------------------------- */
+
+/* Contenedor del formulario */
+.reservacion-container {
+  width: 70%;
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 30px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Título del formulario */
+.reservacion-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilo de los campos de formulario */
+.form-control {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* Estilo del botón de envío */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Efecto hover del botón */
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Ajuste para campos con validación de error */
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Feedback de error */
+.invalid-feedback {
+  display: block;
+  color: #dc3545;
+  font-size: 14px;
+}
+
+/* Estilo de los grupos de campos */
+.form-group {
+  margin-bottom: 20px;
+}

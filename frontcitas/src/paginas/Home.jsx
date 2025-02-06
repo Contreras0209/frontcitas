@@ -10,7 +10,6 @@ const Home = () => {
       <Navbar />
       <div className="main-container">
         <h1>Clinica de nutricion S.A de C.V</h1>
-
         {/* Carrusel centrado */}
         <div className="carousel-container">
           <Carrusel />
