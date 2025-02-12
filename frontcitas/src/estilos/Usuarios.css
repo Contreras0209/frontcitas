@@ -1,0 +1,14 @@
+/* src/estilo/usuarios.css */
+.usuarios-container {
+    padding: 5px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .usuarios-container h1 {
+    color: #333;
+  }
+  
+  /* Otros estilos específicos para la página Usuarios */
+  

@@ -1,11 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
+  const location = useLocation();
+
+
+  if (location.pathname === '/usuarios') {
+    return null;
+  }
+
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
-        {/* Logo convertido en botón */}
+        
         <button className="navbar-brand btn btn-link" onClick={() => window.location.href = '/'}>Logo</button>
         
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

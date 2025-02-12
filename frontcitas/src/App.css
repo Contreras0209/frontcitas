@@ -9,7 +9,7 @@ nav.navbar {
   background-color: #242424; 
 }
 
-/* Espaciado para el body, considerando la navbar fija */
+/* Espacio para el body, considerando la navbar fija */
 body {
   margin: 0;
   padding-top: 80px; 

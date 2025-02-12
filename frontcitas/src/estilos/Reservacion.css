@@ -1,23 +1,22 @@
 
 /* ----------------------------------- Formulario de Reservación ----------------------------------- */
 
-/* Contenedor del formulario */
 .reservacion-container {
-    width: 70%;
+    width: 80%;
     max-width: 1000px;
-    margin: 100px auto;
-    padding: 30px;
+    margin: 20px auto;
+    padding: 50px;
     background: #f8f9fa;
-    border-radius: 8px;
+    border-radius: 5px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding-top: 10px;
+    text-align: left;
+    padding-top: 1px;
   }
   
   /* Título del formulario */
   .reservacion-container h2 {
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: bold;
     color: #333;
   }

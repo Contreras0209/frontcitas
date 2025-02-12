@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import '../estilos/Reservacion.css';  // Asegúrate de tener esta línea
+import '../estilos/Reservacion.css'; 
 
 
 function Reservacion() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
-import Formulario from '../componentes/formulario'; 
+import Formulario from '../componentes/Formulario'; 
 import { Link } from 'react-router-dom';
 
 const Login = () => {
@@ -13,6 +13,8 @@ const Login = () => {
     </div>
   );
 };
+
+
 
 export default Login;
 
