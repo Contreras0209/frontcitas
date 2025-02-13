@@ -1,24 +1,18 @@
-import Nav from 'react-bootstrap/Nav';
+import React from 'react';
+import { Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';  // Importar Link
 
-function FillExample() {
+function BarUsuarios() {
   return (
-    <Nav fill variant="tabs" defaultActiveKey="/home">
+    <Nav fill variant="tabs">
       <Nav.Item>
-        <Nav.Link href="/home">Active</Nav.Link>
+        <Nav.Link as={Link} to="/Usuarios/crud">Administrar Usuarios</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link eventKey="link-1">Loooonger NavLink</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="link-2">Link</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link eventKey="disabled" disabled>
-          Disabled
-        </Nav.Link>
+        <Nav.Link as={Link} to="/Usuarios/otro">Otra Pestaña</Nav.Link>
       </Nav.Item>
     </Nav>
   );
 }
 
-export default FillExample;
+export default BarUsuarios;

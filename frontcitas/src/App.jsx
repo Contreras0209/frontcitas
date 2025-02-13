@@ -2,15 +2,16 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import Home from './paginas/Home';
 import Login from './paginas/Login';
 import Citas from './paginas/Citas';
-import Usuarios from './paginas/Usuarios';
+import Usuarios from './paginas/Usuarios';  // Página de usuarios
+import CrudUsuario from './componentes/CrudUsuario';  // Componente CRUD
 import Navbar from './componentes/Navbar';
+import BarUsuarios from './componentes/BarUsuarios';
 
 function AppContent() {
   const location = useLocation();
 
   return (
     <div>
-      {/* Solo renderiza el Navbar si NO estamos en la página de usuarios */}
       {location.pathname !== '/Usuarios' && <Navbar />}
 
       <Routes>
@@ -18,7 +19,12 @@ function AppContent() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/citas" element={<Citas />} />
-        <Route path="/Usuarios" element={<Usuarios />} /> {/* Página de usuarios */}
+
+        {/* Ruta principal de Usuarios */}
+        <Route path="/Usuarios" element={<Usuarios />}>
+          {/* Ruta interna para mostrar el CRUD de usuarios */}
+          <Route path="crud" element={<CrudUsuario />} />
+        </Route>
       </Routes>
     </div>
   );

@@ -3,128 +3,109 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const CrudUsuario = () => {
-  const [employees, setEmployees] = useState([]);
-  const [editingId, setEditingId] = useState(null);
-  const [newEmployee, setNewEmployee] = useState({ name: "", department: "", phone: "" });
+    const [usuarios, setUsuarios] = useState([]);
+    const [nuevoUsuario, setNuevoUsuario] = useState({
+        nombre: "",
+        direccion: "",
+        correo_electronico: "",
+        contrasena: "",
+        rol_usuario: "",
+        activo: true,
+    });
 
-  useEffect(() => {
-    axios.get("http://localhost:8080/api/employees")
-      .then(response => setEmployees(response.data))
-      .catch(error => console.error("Error fetching employees:", error));
-  }, []);
+    useEffect(() => {
+        obtenerUsuarios();
+    }, []);
 
-  const handleAdd = () => {
-    if (!newEmployee.name || !newEmployee.department || !newEmployee.phone) return;
-    axios.post("http://localhost:8080/api/employees", newEmployee)
-      .then(response => setEmployees([...employees, response.data]))
-      .catch(error => console.error("Error adding employee:", error));
-    setNewEmployee({ name: "", department: "", phone: "" });
-  };
+    const obtenerUsuarios = async () => {
+        try {
+            const response = await axios.get("http://localhost:8080/Nutricion/webresources/Usuarios/listar");
+            setUsuarios(response.data);
+        } catch (error) {
+            console.error("Error al obtener usuarios:", error);
+        }
+    };
 
-  const handleEdit = (id) => {
-    setEditingId(id);
-  };
+    const manejarAgregar = async () => {
+        try {
+            await axios.post("http://localhost:8080/Nutricion/webresources/Usuarios/guardar", nuevoUsuario, {
+                headers: { "Content-Type": "application/json" },
+            });
+            alert("Usuario guardado correctamente.");
+            obtenerUsuarios();
+            setNuevoUsuario({
+                nombre: "",
+                direccion: "",
+                correo_electronico: "",
+                contrasena: "",
+                rol_usuario: "",
+                activo: true,
+            });
+        } catch (error) {
+            alert("Error al guardar el usuario.");
+        }
+    };
 
-  const handleSave = (id) => {
-    axios.put(`http://localhost:8080/api/employees/${id}`, newEmployee)
-      .then(() => {
-        setEmployees(employees.map(emp => (emp.id === id ? { ...emp, ...newEmployee } : emp)));
-        setEditingId(null);
-        setNewEmployee({ name: "", department: "", phone: "" });
-      })
-      .catch(error => console.error("Error updating employee:", error));
-  };
-
-  const handleDelete = (id) => {
-    axios.delete(`http://localhost:8080/api/employees/${id}`)
-      .then(() => setEmployees(employees.filter(emp => emp.id !== id)))
-      .catch(error => console.error("Error deleting employee:", error));
-  };
-
-  return (
-    <div className="container">
-      <div className="table-wrapper">
-        <div className="table-title">
-          <div className="row">
-            <div className="col-sm-8">
-              <h2>Employee <b>Details</b></h2>
+    return (
+        <div className="container">
+            <h2>Gestión de Usuarios</h2>
+            <div>
+                <input
+                    type="text"
+                    placeholder="Nombre"
+                    value={nuevoUsuario.nombre}
+                    onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, nombre: e.target.value })}
+                />
+                <input
+                    type="text"
+                    placeholder="Dirección"
+                    value={nuevoUsuario.direccion}
+                    onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, direccion: e.target.value })}
+                />
+                <input
+                    type="email"
+                    placeholder="Correo Electrónico"
+                    value={nuevoUsuario.correo_electronico}
+                    onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, correo_electronico: e.target.value })}
+                />
+                <input
+                    type="password"
+                    placeholder="Contraseña"
+                    value={nuevoUsuario.contrasena}
+                    onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, contrasena: e.target.value })}
+                />
+                <input
+                    type="text"
+                    placeholder="Rol"
+                    value={nuevoUsuario.rol_usuario}
+                    onChange={(e) => setNuevoUsuario({ ...nuevoUsuario, rol_usuario: e.target.value })}
+                />
+                <button onClick={manejarAgregar}>Agregar Usuario</button>
             </div>
-            <div className="col-sm-4">
-              <button className="btn btn-info add-new" onClick={handleAdd}>
-                <i className="fa fa-plus"></i> Add New
-              </button>
-            </div>
-          </div>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Correo Electrónico</th>
+                        <th>Rol</th>
+                        <th>Activo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {usuarios.map((usuario) => (
+                        <tr key={usuario.id}>
+                            <td>{usuario.nombre}</td>
+                            <td>{usuario.direccion}</td>
+                            <td>{usuario.correo_electronico}</td>
+                            <td>{usuario.rol_usuario}</td>
+                            <td>{usuario.activo ? "Activo" : "Inactivo"}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
-        <table className="table table-bordered">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Department</th>
-              <th>Phone</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {employees.map((emp) => (
-              <tr key={emp.id}>
-                <td>
-                  {editingId === emp.id ? (
-                    <input
-                      type="text"
-                      className="form-control"
-                      defaultValue={emp.name}
-                      onChange={(e) => setNewEmployee({ ...newEmployee, name: e.target.value })}
-                    />
-                  ) : (
-                    emp.name
-                  )}
-                </td>
-                <td>
-                  {editingId === emp.id ? (
-                    <input
-                      type="text"
-                      className="form-control"
-                      defaultValue={emp.department}
-                      onChange={(e) => setNewEmployee({ ...newEmployee, department: e.target.value })}
-                    />
-                  ) : (
-                    emp.department
-                  )}
-                </td>
-                <td>
-                  {editingId === emp.id ? (
-                    <input
-                      type="text"
-                      className="form-control"
-                      defaultValue={emp.phone}
-                      onChange={(e) => setNewEmployee({ ...newEmployee, phone: e.target.value })}
-                    />
-                  ) : (
-                    emp.phone
-                  )}
-                </td>
-                <td>
-                  {editingId === emp.id ? (
-                    <button className="btn btn-success" onClick={() => handleSave(emp.id)}>
-                      <i className="material-icons">check</i>
-                    </button>
-                  ) : (
-                    <button className="btn btn-warning" onClick={() => handleEdit(emp.id)}>
-                      <i className="material-icons">edit</i>
-                    </button>
-                  )}
-                  <button className="btn btn-danger" onClick={() => handleDelete(emp.id)}>
-                    <i className="material-icons">delete</i>
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default CrudUsuario;
