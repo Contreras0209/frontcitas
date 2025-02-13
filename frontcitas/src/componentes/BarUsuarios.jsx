@@ -9,7 +9,7 @@ function BarUsuarios() {
         <Nav.Link as={Link} to="/Usuarios/crud">Administrar Usuarios</Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Nav.Link as={Link} to="/Usuarios/otro">Otra Pestaña</Nav.Link>
+        <Nav.Link as={Link} to="/Usuarios/crud2">Administrar citas</Nav.Link>
       </Nav.Item>
     </Nav>
   );

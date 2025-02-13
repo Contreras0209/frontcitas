@@ -6,6 +6,7 @@ import Usuarios from './paginas/Usuarios';  // Página de usuarios
 import CrudUsuario from './componentes/CrudUsuario';  // Componente CRUD
 import Navbar from './componentes/Navbar';
 import BarUsuarios from './componentes/BarUsuarios';
+import CrudCita from './paginas/CrudCitas';
 
 function AppContent() {
   const location = useLocation();
@@ -24,6 +25,7 @@ function AppContent() {
         <Route path="/Usuarios" element={<Usuarios />}>
           {/* Ruta interna para mostrar el CRUD de usuarios */}
           <Route path="crud" element={<CrudUsuario />} />
+          <Route path="crud2" element={<CrudCita />} />
         </Route>
       </Routes>
     </div>

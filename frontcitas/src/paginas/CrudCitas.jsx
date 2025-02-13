@@ -4,7 +4,7 @@ import CrudCita from "../componentes/CrudCita";
 const Crudcita = () => {
   return (
     <div>
-      <h1>Control de citas</h1>
+      <h2>Control de citas</h2>
       <CrudCita />
     </div>
   );
