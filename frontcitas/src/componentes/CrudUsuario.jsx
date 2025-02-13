@@ -19,7 +19,7 @@ const CrudUsuario = () => {
 
     const obtenerUsuarios = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/Nutricion/webresources/Usuarios/listar");
+            const response = await axios.get("http://localhost:8080/Nutricion/webresources/Usuarios/mostrar");
             setUsuarios(response.data);
         } catch (error) {
             console.error("Error al obtener usuarios:", error);
