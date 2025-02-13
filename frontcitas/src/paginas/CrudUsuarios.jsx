@@ -4,7 +4,7 @@ import CrudUsuario from "../componentes/CrudUsuario";
 const CrudUsuario = () => {
   return (
     <div>
-      <h1>Control Usuarios</h1>
+      <h2>Administracion de usuarios</h2>
       <CrudUsuario />
     </div>
   );

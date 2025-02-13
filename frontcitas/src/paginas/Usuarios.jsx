@@ -5,7 +5,7 @@ import BarUsuarios from "../componentes/BarUsuarios";  // Importar BarUsuarios
 function Usuarios() {
   return (
     <div>
-      <h2>Gestión de Usuarios</h2>
+      <h1>Bienvenido administrador</h1>
       <BarUsuarios />  {/* Barra con las pestañas */}
       <Outlet />  {/* Aquí se renderizarán las rutas anidadas, como CrudUsuario */}
     </div>
