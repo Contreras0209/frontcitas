@@ -6,7 +6,7 @@ import Usuarios from './paginas/Usuarios';  // Página de usuarios
 import CrudUsuario from './componentes/CrudUsuario';  // Componente CRUD
 import Navbar from './componentes/Navbar';
 import BarUsuarios from './componentes/BarUsuarios';
-import CrudCita from './paginas/CrudCitas';
+import CrudCita from './componentes/CrudCita';
 
 function AppContent() {
   const location = useLocation();

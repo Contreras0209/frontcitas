@@ -9,7 +9,9 @@ const CrudReservaciones = () => {
         direccion_paciente: "",
         telefono_paciente: "",
         correo_electronico: "",
-        motivo_consulta: ""
+        motivo_consulta: "",
+        fecha: "",
+        hora: ""
     });
     const [editando, setEditando] = useState(false);
     const [reservacionEditandoId, setReservacionEditandoId] = useState(null);
@@ -29,12 +31,7 @@ const CrudReservaciones = () => {
 
     const manejarAgregar = async () => {
         try {
-            const params = new URLSearchParams();
-            params.append("nombre_paciente", nuevaReservacion.nombre_paciente);
-            params.append("direccion_paciente", nuevaReservacion.direccion_paciente);
-            params.append("telefono_paciente", nuevaReservacion.telefono_paciente);
-            params.append("correo_electronico", nuevaReservacion.correo_electronico);
-            params.append("motivo_consulta", nuevaReservacion.motivo_consulta);
+            const params = new URLSearchParams(nuevaReservacion);
 
             await axios.post("http://localhost:8080/Nutricion/webresources/Reservaciones/guardar", params.toString(), {
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -42,7 +39,7 @@ const CrudReservaciones = () => {
 
             alert("Reservación guardada correctamente.");
             obtenerReservaciones();
-            setNuevaReservacion({ nombre_paciente: "", direccion_paciente: "", telefono_paciente: "", correo_electronico: "", motivo_consulta: "" });
+            limpiarFormulario();
         } catch (error) {
             alert("Error al guardar la reservación.");
         }
@@ -56,13 +53,7 @@ const CrudReservaciones = () => {
 
     const manejarActualizar = async () => {
         try {
-            const params = new URLSearchParams();
-            params.append("id", reservacionEditandoId);
-            params.append("nombre_paciente", nuevaReservacion.nombre_paciente);
-            params.append("direccion_paciente", nuevaReservacion.direccion_paciente);
-            params.append("telefono_paciente", nuevaReservacion.telefono_paciente);
-            params.append("correo_electronico", nuevaReservacion.correo_electronico);
-            params.append("motivo_consulta", nuevaReservacion.motivo_consulta);
+            const params = new URLSearchParams(nuevaReservacion);
 
             await axios.post("http://localhost:8080/Nutricion/webresources/Reservaciones/editar", params.toString(), {
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -70,9 +61,7 @@ const CrudReservaciones = () => {
 
             alert("Reservación actualizada correctamente.");
             obtenerReservaciones();
-            setEditando(false);
-            setReservacionEditandoId(null);
-            setNuevaReservacion({ nombre_paciente: "", direccion_paciente: "", telefono_paciente: "", correo_electronico: "", motivo_consulta: "" });
+            limpiarFormulario();
         } catch (error) {
             alert("Error al actualizar la reservación.");
         }
@@ -88,6 +77,12 @@ const CrudReservaciones = () => {
         }
     };
 
+    const limpiarFormulario = () => {
+        setEditando(false);
+        setReservacionEditandoId(null);
+        setNuevaReservacion({ nombre_paciente: "", direccion_paciente: "", telefono_paciente: "", correo_electronico: "", motivo_consulta: "", fecha: "", hora: "" });
+    };
+
     return (
         <div className="container">
             <h2>Gestión de Reservaciones</h2>
@@ -97,8 +92,10 @@ const CrudReservaciones = () => {
                 <input type="text" placeholder="Teléfono" value={nuevaReservacion.telefono_paciente} onChange={(e) => setNuevaReservacion({ ...nuevaReservacion, telefono_paciente: e.target.value })} />
                 <input type="email" placeholder="Correo Electrónico" value={nuevaReservacion.correo_electronico} onChange={(e) => setNuevaReservacion({ ...nuevaReservacion, correo_electronico: e.target.value })} />
                 <input type="text" placeholder="Motivo de Consulta" value={nuevaReservacion.motivo_consulta} onChange={(e) => setNuevaReservacion({ ...nuevaReservacion, motivo_consulta: e.target.value })} />
+                <input type="date" value={nuevaReservacion.fecha} onChange={(e) => setNuevaReservacion({ ...nuevaReservacion, fecha: e.target.value })} />
+                <input type="time" value={nuevaReservacion.hora} onChange={(e) => setNuevaReservacion({ ...nuevaReservacion, hora: e.target.value })} />
                 <button onClick={editando ? manejarActualizar : manejarAgregar}>{editando ? "Actualizar Reservación" : "Agregar Reservación"}</button>
-                {editando && <button onClick={() => { setEditando(false); setReservacionEditandoId(null); setNuevaReservacion({ nombre_paciente: "", direccion_paciente: "", telefono_paciente: "", correo_electronico: "", motivo_consulta: "" }); }}>Cancelar Edición</button>}
+                {editando && <button onClick={limpiarFormulario}>Cancelar Edición</button>}
             </div>
             <table className="table">
                 <thead>
@@ -108,6 +105,8 @@ const CrudReservaciones = () => {
                         <th>Teléfono</th>
                         <th>Correo Electrónico</th>
                         <th>Motivo</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -119,6 +118,8 @@ const CrudReservaciones = () => {
                             <td>{reservacion.telefono_paciente}</td>
                             <td>{reservacion.correo_electronico}</td>
                             <td>{reservacion.motivo_consulta}</td>
+                            <td>{reservacion.fecha}</td>
+                            <td>{reservacion.hora}</td>
                             <td>
                                 <button onClick={() => manejarEditar(reservacion)}>Editar</button>
                                 <button onClick={() => manejarEliminar(reservacion.id)}>Eliminar</button>
@@ -132,3 +133,4 @@ const CrudReservaciones = () => {
 };
 
 export default CrudReservaciones;
+
